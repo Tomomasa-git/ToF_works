@@ -1,0 +1,14 @@
+2020. 06. 29 (Mon)
+*HyperNKSでなぜか同じセッティングでランを走らせると同じ内容が記録されたrootファイルが生成されてしまう現象が起り困っている.
+
+*始めはTargetWindowの物質をBe or Al で変更した際にも同じことが起こっていたのだが, それはTDLのフレームに相当する部分のパーツの内径が0[mm]で src/DetectorConstruction.cc 内部でtarget周りのものよりも後で定義されることで上書きされてしまい, エラーを起こしてしまっていたことが原因であった様だ.
+*この問題に関しては26(Fri)-27(Sat)にかけてTDLフレームの内径を40mmとすることで解決済み.
+
+*が, input/input.in 内でdecayflagをon/offにするかどうかで変化がみられるかということを確かめようとしたところ, decayflag on/off の前後でまたしても全く同じ(と思われるような)イベントが記録されることが起こってしまった.
+*念の為にTargetWindowの物質をBeに変更してみたところ, それは反映されている様に見える. 
+decayが反映されているかどうかを確かめるためにctauが短い様な粒子としてK+を同じ位置から同数(100000)飛ばしてみると, decayflag on/off の前後での違いは一応観測されている. 然し, 同じ条件でランを回すと同じ内容のrootファイルが生成されるということは変わらなかった. 
+
+*そこで, 他のdetector同士の干渉によるエラーが原因である可能性を確認することにした.
+*G4VPVPlacement という class では pSurfChk という変数があり, それを ture (default:false) にすることによって配置した物体の干渉について調べてくれる様だ.
+参考URL: https://geant4.web.cern.ch/sites/geant4.web.cern.ch/files/geant4/collaboration/working_groups/geometry/training/D4-Optimisation.pdf
+(p15あたりの真ん中部分とか)
