@@ -12,3 +12,33 @@ decayが反映されているかどうかを確かめるためにctauが短い�
 *G4VPVPlacement という class では pSurfChk という変数があり, それを ture (default:false) にすることによって配置した物体の干渉について調べてくれる様だ.
 参考URL: https://geant4.web.cern.ch/sites/geant4.web.cern.ch/files/geant4/collaboration/working_groups/geometry/training/D4-Optimisation.pdf
 (p15あたりの真ん中部分とか)
+*これを受けてVirtualDetectorについて物体との干渉を調べてみることにした.
+=======以下, その結果======
+
+Checking overlaps for volume vd0PV ... 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : GeomVol1002
+      issued by : G4PVPlacement::CheckOverlaps()
+Overlap with volume already placed !
+          Overlap is detected for volume vd0PV:0
+          with VdcPV:0 volume's
+          local point (81.091,-157.22,299.9), overlapping by at least: 2.50996 cm 
+NOTE: Reached maximum fixed number -1- of overlaps reports for this volume !
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+Checking overlaps for volume vd1PV ... 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : GeomVol1002
+      issued by : G4PVPlacement::CheckOverlaps()
+Overlap with volume already placed !
+          Overlap is detected for volume vd1PV:1
+          with YokePV:0 volume's
+          local point (1316.56,-1188.59,-0.1), overlapping by at least: 20.3409 cm 
+NOTE: Reached maximum fixed number -1- of overlaps reports for this volume !
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+Checking overlaps for volume vd2PV ... OK! 
+
+=======結果, ここまで======
