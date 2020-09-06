@@ -1,0 +1,3 @@
+### This is sample  ###
+### if runID is 999, this line was weighted mean value of several data sets.
+runID  bias [V/Num. of MPPC]  ToF1.Gain [pC]  ToF1.GainError [pC]  ToF2.Gain [pC]  ToF2.GainError [pC]  Ave.Gain [pC]  Ave.GainError [pC]  sigma.val [psec] sigma.Error [psec]
